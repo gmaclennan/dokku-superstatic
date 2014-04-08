@@ -1,8 +1,7 @@
-Heroku Buildpack for Node.js
-============================
+Dokku buildpack for serving static sites
+========================================
 
-This is the official [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) for Node.js apps. If you fork this repository, please **update this README** to explain what your fork does and why it's special.
-
+This is a [dokku](https://github.com/progrium/dokku) buildpack for serving static sites with [superstatic](https://www.npmjs.org/package/superstatic). Superstatic is built by [Divshot](www.divshot.com) to power their static site hosting service. This buildpack allows you to deploy your own static site service easily using dokku.
 
 How it Works
 ------------
