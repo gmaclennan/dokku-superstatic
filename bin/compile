@@ -55,10 +55,14 @@ PATH=$PATH:$build_dir/vendor/node/bin
 # Run subsequent node/npm commands from the build path
 cd $build_dir
 
-# Restore node_modules from cache.
-if test -d $cache_dir/node/node_modules; then
+# Restore superstatic from cache or install
+if test -d $cache_dir/node/node_modules/superstatic; then
   status "Restoring node_modules directory from cache"
   cp -r $cache_dir/node/node_modules $build_dir/
+else
+  # Install superstatic
+  status "Installing superstatic"
+  npm install superstatic 2>&1 | indent
 fi
 
 # Handle npm's new cert bug
@@ -86,10 +90,6 @@ cp -r $build_dir/.heroku $cache_dir/node
 status "Cleaning up node-gyp and npm artifacts"
 rm -rf "$build_dir/.node-gyp"
 rm -rf "$build_dir/.npm"
-
-# Install superstatic
-status "Installing superstatic"
-npm install superstatic
 
 # If app has a node_modules directory, cache it.
 if test -d $build_dir/node_modules; then
