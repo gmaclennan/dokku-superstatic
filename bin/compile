@@ -55,6 +55,12 @@ PATH=$PATH:$build_dir/vendor/node/bin
 # Run subsequent node/npm commands from the build path
 cd $build_dir
 
+# Restore node_modules from cache.
+if test -d $cache_dir/node/node_modules; then
+  status "Restoring node_modules directory from cache"
+  cp -r $cache_dir/node/node_modules $build_dir/
+fi
+
 # Handle npm's new cert bug
 # http://blog.npmjs.org/post/78085451721/npms-self-signed-certificate-is-no-more
 if [ ! -f "$build_dir/.npmrc" ]; then
