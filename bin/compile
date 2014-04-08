@@ -89,7 +89,7 @@ rm -rf "$build_dir/.npm"
 
 # Install superstatic
 status "Installing superstatic"
-npm install superstatic
+npm install -g superstatic
 
 # Create a Procfile
 status "Creating a superstatic server Procfile"
